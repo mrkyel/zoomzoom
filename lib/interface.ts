@@ -7,7 +7,7 @@ export interface IProduct {
   success: boolean;
 }
 
-interface ProductData {
+export interface ProductData {
   type: string;
   id: number;
   kind: number;
