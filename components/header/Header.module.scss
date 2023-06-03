@@ -1,8 +1,18 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: -webkit-fill-available;
   display: flex;
   justify-content: space-between;
   padding: 10px 50px;
   border: 1px solid gainsboro;
+  transition: transform 0.3s ease;
+  background-color: white;
+  z-index: 999; 
+  &.hidden {
+    transform: translateY(-100%);
+  }
 }
 
 .heart-container {
@@ -28,6 +38,6 @@
   border-radius: 50%;
   background-color: red;
   color: white;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
 }
