@@ -26,11 +26,11 @@ const Card: React.FC<CardProps> = ({ product }) => {
 
   const handleHeartClick: React.MouseEventHandler = () => {
     if (isHeartFilled) {
-      setHeartCount((prevCount) => prevCount - 1);
+      setHeartCount(prevCount => prevCount - 1);
     } else {
-      setHeartCount((prevCount) => prevCount + 1);
+      setHeartCount(prevCount => prevCount + 1);
     }
-    setIsHeartFilled((prevFilled) => !prevFilled);
+    setIsHeartFilled(prevFilled => !prevFilled);
   };
 
   return (

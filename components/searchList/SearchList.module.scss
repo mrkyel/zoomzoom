@@ -1,7 +1,39 @@
-.card-container {
+.container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 0 auto;
-  max-width: 1200px;
+  flex-direction: column;
+  padding: 10px;
+
+  .filterInfo {
+    margin: 0 10px;
+    .searchResult {
+      margin: 20px 15px;
+      font-weight: bold;
+    }
+    .tag-container {
+      display: flex;
+    }
+  }
+
+  .filterTag {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+
+    .filterButton {
+      border-radius: 40px;
+      border: 0;
+      padding: 10px 15px;
+      font-weight: bold;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
 }

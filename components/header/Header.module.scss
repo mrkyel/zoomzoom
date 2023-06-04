@@ -6,10 +6,10 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 50px;
-  border: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
   transition: transform 0.3s ease;
   background-color: white;
-  z-index: 999; 
+  z-index: 999;
   &.hidden {
     transform: translateY(-100%);
   }

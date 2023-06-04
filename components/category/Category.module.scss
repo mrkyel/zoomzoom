@@ -1,0 +1,131 @@
+.container {
+  border-bottom: 1px solid gainsboro;
+
+  .inner {
+    max-width: 1200px;
+    padding: 0 35px;
+
+    .city {
+      font-size: 32px;
+      font-weight: 800;
+      padding: 20px 0;
+    }
+
+    .dropdown {
+      display: flex;
+
+      .dropdownButton {
+        cursor: pointer;
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        margin: 20px 20px 50px 0;
+        position: relative;
+        width: 120px;
+        justify-content: space-between;
+
+        &.selected {
+          background: #0aca6f;
+        }
+
+        .round {
+          border-radius: 50%;
+          background-color: #fff;
+          color: #0aca6f;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .arrow {
+          margin-left: 8px;
+          width: 10px;
+          height: 10px;
+          border-top: 2px solid #000;
+          border-right: 2px solid #000;
+          transform: rotate(135deg);
+          margin-top: -5px;
+        }
+      }
+
+      .dropdownContent {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 0 0 4px 4px;
+        width: -webkit-fill-available;
+
+        .dropdownItem {
+          cursor: pointer;
+          padding: 8px 16px;
+
+          &.selected {
+            background-color: #f0f0f0;
+          }
+        }
+        .checkmark {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+  .itineraryDropdown {
+    position: relative;
+    display: inline-block;
+
+    .dropdownButton {
+      cursor: pointer;
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+
+      .arrow {
+        margin-left: 8px;
+        width: 12px;
+        height: 12px;
+        border-top: 1px solid #000;
+        border-right: 1px solid #000;
+        transform: rotate(45deg);
+      }
+    }
+
+    .dropdownContent {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+
+      .dropdownItem {
+        cursor: pointer;
+        padding: 8px 16px;
+
+        &.selected {
+          background-color: #f0f0f0;
+        }
+      }
+      .checkmark {
+        margin-left: auto;
+      }
+    }
+  }
+}

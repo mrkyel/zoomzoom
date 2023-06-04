@@ -5,7 +5,7 @@ import HeartIcon from "../../public/heart.svg";
 import { useAtom } from "jotai";
 import { heartCountAtom } from "./../../atoms/like";
 
-function Header() {
+const Header: React.FC = () => {
   const [heartCount] = useAtom(heartCountAtom);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -32,10 +32,12 @@ function Header() {
       <Image src="/zoomzoomtour-logo.png" alt="logo" width={75} height={50} />
       <div className={styles["heart-container"]}>
         <HeartIcon style={{ width: "25px", height: "25px" }} />
-        <div className={styles["heart-count"]}>{formattedHeartCount}</div>
+        {heartCount > 0 && (
+          <div className={styles["heart-count"]}>{formattedHeartCount}</div>
+        )}
       </div>
     </header>
   );
-}
+};
 
 export default Header;
