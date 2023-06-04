@@ -48,7 +48,7 @@ const Card: React.FC<CardProps> = ({ product }) => {
       </div>
       <div className={styles["card-description"]}>
         <div className={styles["tour-time"]}>
-          {categoryName}+{tourTime}
+          {categoryName} • {tourTime}
         </div>
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.rating}>

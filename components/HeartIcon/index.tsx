@@ -21,7 +21,7 @@ interface HeartIconProps {
 }
 
 const HeartIcon: React.FC<HeartIconProps> = ({ filled }) => {
-  const [isFilled, setIsFilled] = useState(filled);
+  const [isFilled, setIsFilled] = useState<boolean>(filled);
 
   const handleClick: React.MouseEventHandler<SVGSVGElement> = () => {
     setIsFilled(!isFilled);

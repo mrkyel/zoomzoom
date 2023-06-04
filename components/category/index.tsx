@@ -10,12 +10,12 @@ const Category: React.FC = () => {
   const [isItineraryDropdownOpen, setItineraryDropdownOpen] = useState(false);
 
   const handleToggleTourTypeDropdown = () => {
-    setTourTypeDropdownOpen(prevOpen => !prevOpen);
+    setTourTypeDropdownOpen(!isTourTypeDropdownOpen);
     setItineraryDropdownOpen(false);
   };
 
   const handleToggleItineraryDropdown = () => {
-    setItineraryDropdownOpen(prevOpen => !prevOpen);
+    setItineraryDropdownOpen(!isItineraryDropdownOpen);
     setTourTypeDropdownOpen(false);
   };
 

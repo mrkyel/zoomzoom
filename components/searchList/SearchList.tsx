@@ -10,23 +10,25 @@ import { filters } from "./../../lib/filters";
 
 const SearchList: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useAtom(selectedFiltersAtom);
+  const { tourType, itinerary } = selectedFilters;
+  const tourTypeLength = tourType.length;
+  const itineraryLength = itinerary.length;
 
   const fetchProducts = async (): Promise<IProduct> => {
     const url = new URL(`${BASE_URL}`);
-
     url.searchParams.append("per_page", "20");
     url.searchParams.append("with", "country,seller");
     url.searchParams.append("only[seller]", "companyName,nickname");
     url.searchParams.append("category_id", "64");
     url.searchParams.append("page", "1");
 
-    if (selectedFilters.tourType.length > 0) {
-      const tourTypeFilters = selectedFilters.tourType.join(",");
+    if (tourTypeLength > 0) {
+      const tourTypeFilters = tourType.join(",");
       url.searchParams.append("filter[tourType]", tourTypeFilters);
     }
 
-    if (selectedFilters.itinerary.length > 0) {
-      const itineraryFilters = selectedFilters.itinerary.join(",");
+    if (itineraryLength > 0) {
+      const itineraryFilters = itinerary.join(",");
       url.searchParams.append("filter[itinerary]", itineraryFilters);
     }
 
@@ -46,6 +48,17 @@ const SearchList: React.FC = () => {
     refetch();
   }, [selectedFilters, refetch]);
 
+  const handleRemoveFilter = (filter: string, filterType: string) => {
+    setSelectedFilters(prevFilters => ({
+      ...prevFilters,
+      [filterType]: prevFilters[filterType].filter(type => type !== filter),
+    }));
+  };
+
+  const getFilterText = (filterKey: string, filterType: string) => {
+    return filters[filterType].find(item => item.key === filterKey)?.text || "";
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -54,53 +67,33 @@ const SearchList: React.FC = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const handleRemoveTourTypeFilter = (filter: string) => {
-    setSelectedFilters(prevFilters => ({
-      ...prevFilters,
-      tourType: prevFilters.tourType.filter(type => type !== filter),
-    }));
-  };
-
-  const handleRemoveItineraryFilter = (filter: string) => {
-    setSelectedFilters(prevFilters => ({
-      ...prevFilters,
-      itinerary: prevFilters.itinerary.filter(type => type !== filter),
-    }));
-  };
-
-  const getFilterText = (filterKey: string, filterType: string) => {
-    const filterList = filters[filterType];
-    const filter = filterList.find(item => item.key === filterKey);
-    return filter ? filter.text : "";
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.filterInfo}>
         <div className={styles.searchResult}>
-          검색결과 : {data.data.length}개 상품
+          검색결과: {data.data.length}개 상품
         </div>
         <div className={styles["tag-container"]}>
-          {selectedFilters.tourType.length > 0 && (
+          {tourTypeLength > 0 && (
             <span className={styles.filterTag}>
-              {selectedFilters.tourType.map(filter => (
+              {tourType.map(filter => (
                 <button
                   key={filter}
                   className={styles.filterButton}
-                  onClick={() => handleRemoveTourTypeFilter(filter)}
+                  onClick={() => handleRemoveFilter(filter, "tourType")}
                 >
                   {getFilterText(filter, "tourTypes")} X
                 </button>
               ))}
             </span>
           )}
-          {selectedFilters.itinerary.length > 0 && (
+          {itineraryLength > 0 && (
             <span className={styles.filterTag}>
-              {selectedFilters.itinerary.map(filter => (
+              {itinerary.map(filter => (
                 <button
                   key={filter}
                   className={styles.filterButton}
-                  onClick={() => handleRemoveItineraryFilter(filter)}
+                  onClick={() => handleRemoveFilter(filter, "itinerary")}
                 >
                   {getFilterText(filter, "itinerary")} X
                 </button>
