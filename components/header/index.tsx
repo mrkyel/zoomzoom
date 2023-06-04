@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import HeartIcon from "../../public/heart.svg";
 import { useAtom } from "jotai";
-import { heartCountAtom } from "./../../atoms/like";
+import { heartCountAtom } from "../../atoms/wishCheck";
 
 const Header: React.FC = () => {
   const [heartCount] = useAtom(heartCountAtom);

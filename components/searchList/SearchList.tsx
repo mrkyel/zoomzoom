@@ -7,11 +7,9 @@ import styles from "./SearchList.module.scss";
 import { useAtom } from "jotai";
 import { selectedFiltersAtom } from "./../../atoms/filter";
 import { filters } from "./../../lib/filters";
-import { heartCountAtom } from "./../../atoms/like";
 
 const SearchList: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useAtom(selectedFiltersAtom);
-  const [heartCount, setHeartCount] = useAtom(heartCountAtom);
 
   const fetchProducts = async (): Promise<IProduct> => {
     const url = new URL(`${BASE_URL}`);
@@ -46,8 +44,7 @@ const SearchList: React.FC = () => {
 
   useEffect(() => {
     refetch();
-    setHeartCount(0);
-  }, [selectedFilters, refetch, setHeartCount]);
+  }, [selectedFilters, refetch]);
 
   if (isLoading) {
     return <div>Loading...</div>;
